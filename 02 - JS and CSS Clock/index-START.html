@@ -61,14 +61,34 @@
       height: 6px;
       background: black;
       position: absolute;
+      transform: rotate(90deg);
+      transform-origin: 100%;
       top: 50%;
     }
 
   </style>
 
   <script>
+    const hour = document.querySelector('.hour-hand');
+    const min = document.querySelector('.min-hand');
+    const sec = document.querySelector('.second-hand');
+
+    function changeTime(){
+      let date  = new Date() ; 
+      let hours   = date.getHours();
+      let minuts  = date.getMinutes();
+      let seconds = date.getSeconds(); 
+
+      hour.style.transform = `rotate(${(hours/12)*360+90}deg) `;
+      min.style.transform = `rotate(${(minuts/60)*360+90}deg) `;
+      sec.style.transform = `rotate(${(seconds/60)*360+90}deg) `;
 
 
+      console.log(`${hours} h//${minuts} min //${seconds} sec  `)
+    }
+
+    setInterval(changeTime, 1000);
+  changeTime()
   </script>
 </body>
 </html>
